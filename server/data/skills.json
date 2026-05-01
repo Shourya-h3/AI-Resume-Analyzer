@@ -1,0 +1,47 @@
+{
+  "technical": [
+    "javascript", "typescript", "python", "java", "c++", "c#", "go", "rust", "swift", "kotlin",
+    "ruby", "php", "scala", "r", "matlab", "perl", "bash", "shell", "powershell", "html", "css",
+    "react", "reactjs", "react.js", "angular", "angularjs", "vue", "vuejs", "vue.js", "svelte",
+    "next.js", "nextjs", "nuxt", "gatsby", "ember", "backbone", "jquery", "bootstrap", "tailwind",
+    "material-ui", "chakra-ui", "antd", "node.js", "nodejs", "express", "express.js", "fastapi",
+    "django", "flask", "spring", "spring boot", "laravel", "rails", "ruby on rails", "asp.net",
+    ".net", "graphql", "rest", "restful", "api", "grpc", "websocket", "oauth", "jwt", "openapi",
+    "swagger", "mongodb", "mongoose", "postgresql", "mysql", "sqlite", "redis", "elasticsearch",
+    "cassandra", "dynamodb", "firebase", "supabase", "prisma", "sequelize", "typeorm",
+    "aws", "azure", "gcp", "google cloud", "heroku", "vercel", "netlify", "render", "digitalocean",
+    "docker", "kubernetes", "helm", "terraform", "ansible", "jenkins", "github actions", "circleci",
+    "travis ci", "ci/cd", "devops", "linux", "ubuntu", "centos", "nginx", "apache",
+    "git", "github", "gitlab", "bitbucket", "jira", "confluence", "notion",
+    "machine learning", "deep learning", "neural networks", "nlp", "natural language processing",
+    "computer vision", "tensorflow", "pytorch", "keras", "scikit-learn", "pandas", "numpy",
+    "matplotlib", "seaborn", "opencv", "huggingface", "bert", "gpt", "llm", "langchain",
+    "data science", "data analysis", "data visualization", "tableau", "power bi", "looker",
+    "spark", "hadoop", "kafka", "airflow", "dbt", "etl", "data engineering", "big data",
+    "blockchain", "solidity", "web3", "smart contracts", "cybersecurity", "penetration testing",
+    "ethical hacking", "encryption", "oauth", "iam", "siem", "networking", "tcp/ip", "dns",
+    "microservices", "serverless", "lambda", "event-driven", "message queue", "rabbitmq",
+    "redux", "mobx", "zustand", "react query", "swr", "webpack", "vite", "babel", "eslint",
+    "prettier", "jest", "mocha", "chai", "cypress", "playwright", "selenium", "testing",
+    "unit testing", "integration testing", "tdd", "bdd", "agile", "scrum", "kanban",
+    "figma", "sketch", "adobe xd", "ux", "ui", "responsive design", "accessibility", "wcag",
+    "seo", "performance optimization", "caching", "cdn", "load balancing", "high availability",
+    "system design", "architecture", "design patterns", "solid principles", "clean code",
+    "code review", "pair programming", "open source", "technical documentation"
+  ],
+  "soft": [
+    "communication", "teamwork", "collaboration", "leadership", "problem solving", "critical thinking",
+    "time management", "adaptability", "creativity", "attention to detail", "analytical",
+    "project management", "presentation", "negotiation", "conflict resolution", "mentoring",
+    "coaching", "decision making", "strategic thinking", "emotional intelligence", "empathy",
+    "customer service", "stakeholder management", "cross-functional", "multitasking",
+    "self-motivated", "proactive", "initiative", "accountability", "ownership", "growth mindset"
+  ],
+  "tools": [
+    "vs code", "visual studio code", "intellij", "pycharm", "eclipse", "vim", "emacs",
+    "postman", "insomnia", "dbeaver", "datagrip", "pgadmin", "mongodb compass",
+    "slack", "teams", "zoom", "trello", "asana", "clickup", "linear",
+    "xcode", "android studio", "unity", "unreal engine", "blender",
+    "photoshop", "illustrator", "after effects", "premiere pro"
+  ]
+}
