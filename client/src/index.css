@@ -2,20 +2,20 @@
 
 /* ─── CSS Custom Properties ─── */
 :root {
-  --bg-primary: #020617;
-  --bg-secondary: #0f172a;
-  --bg-card: rgba(30, 41, 59, 0.5);
-  --bg-card-hover: rgba(30, 41, 59, 0.8);
-  --border: rgba(255, 255, 255, 0.05);
-  --border-hover: rgba(56, 189, 248, 0.5);
+  --bg-primary: #050510;
+  --bg-secondary: #0a0a1a;
+  --bg-card: rgba(139, 92, 246, 0.05);
+  --bg-card-hover: rgba(139, 92, 246, 0.1);
+  --border: rgba(139, 92, 246, 0.1);
+  --border-hover: rgba(59, 130, 246, 0.6);
 
-  --primary: #38bdf8;
-  --secondary: #818cf8;
-  --accent: #c084fc;
-  --emerald: #34d399;
-  --rose: #fb7185;
-  --amber: #fbbf24;
-  --pink: #f472b6;
+  --primary: #8b5cf6;
+  --secondary: #3b82f6;
+  --accent: #6366f1;
+  --emerald: #10b981;
+  --rose: #f43f5e;
+  --amber: #f59e0b;
+  --pink: #d946ef;
 
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
@@ -62,35 +62,56 @@ body {
   position: relative;
 }
 
-/* ─── 3D Grid Animation ─── */
-.bg-3d-grid {
+/* ─── 3D Orbital Portal Background ─── */
+.portal-bg {
   position: fixed;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background-image: 
-    linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-  background-size: 80px 80px;
-  transform: perspective(800px) rotateX(60deg) translateY(-100px);
-  animation: grid-move 20s linear infinite;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.6;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at center, #1e1b4b 0%, #050510 100%);
+  overflow: hidden;
+  perspective: 1000px;
 }
 
-@keyframes grid-move {
-  from { transform: perspective(800px) rotateX(60deg) translateY(0); }
-  to { transform: perspective(800px) rotateX(60deg) translateY(80px); }
+.portal-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 50%;
+  animation: rotate-portal 20s linear infinite;
+}
+
+@keyframes rotate-portal {
+  from { transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateX(60deg) rotateZ(360deg); }
+}
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, rgba(139, 92, 246, 0.5), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, rgba(59, 130, 246, 0.5), rgba(0,0,0,0));
+  background-size: 200px 200px;
+  animation: drift 60s linear infinite;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+@keyframes drift {
+  from { background-position: 0 0; }
+  to { background-position: 200px 200px; }
 }
 
 .ambient-glow {
   position: fixed;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
-  filter: blur(100px);
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  filter: blur(120px);
   z-index: -1;
   pointer-events: none;
   border-radius: 50%;

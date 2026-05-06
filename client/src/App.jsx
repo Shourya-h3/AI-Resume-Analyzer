@@ -19,7 +19,12 @@ function App() {
       <Router>
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
           {/* Visual Effects Background */}
-          <div className="bg-3d-grid"></div>
+          <div className="portal-bg">
+            <div className="portal-ring" style={{ width: '400px', height: '400px', animationDelay: '0s' }}></div>
+            <div className="portal-ring" style={{ width: '600px', height: '600px', animationDelay: '-5s', opacity: 0.05 }}></div>
+            <div className="portal-ring" style={{ width: '800px', height: '800px', animationDelay: '-10s', opacity: 0.03 }}></div>
+          </div>
+          <div className="starfield"></div>
           <div className="ambient-glow" style={{ top: '-10%', left: '-10%' }}></div>
           <div className="ambient-glow" style={{ bottom: '-10%', right: '-10%' }}></div>
           
