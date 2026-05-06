@@ -2,16 +2,16 @@
 
 /* ─── CSS Custom Properties ─── */
 :root {
-  --bg-primary: #050510;
-  --bg-secondary: #0a0a1a;
-  --bg-card: rgba(139, 92, 246, 0.05);
-  --bg-card-hover: rgba(139, 92, 246, 0.1);
-  --border: rgba(139, 92, 246, 0.1);
-  --border-hover: rgba(59, 130, 246, 0.6);
+  --bg-primary: #080312;
+  --bg-secondary: #120826;
+  --bg-card: rgba(139, 92, 246, 0.08);
+  --bg-card-hover: rgba(139, 92, 246, 0.15);
+  --border: rgba(139, 92, 246, 0.15);
+  --border-hover: rgba(139, 92, 246, 0.8);
 
-  --primary: #8b5cf6;
-  --secondary: #3b82f6;
-  --accent: #6366f1;
+  --primary: #a855f7; /* Brighter Violet */
+  --secondary: #8b5cf6; /* Main Violet */
+  --accent: #3b82f6; /* Blue as accent only */
   --emerald: #10b981;
   --rose: #f43f5e;
   --amber: #f59e0b;
@@ -62,56 +62,36 @@ body {
   position: relative;
 }
 
-/* ─── 3D Orbital Portal Background ─── */
-.portal-bg {
+/* ─── 3D Floating Monoliths Background ─── */
+.monolith-container {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background: radial-gradient(circle at center, #1e1b4b 0%, #050510 100%);
+  background: radial-gradient(circle at center, #1a0b2e 0%, #080312 100%);
   overflow: hidden;
-  perspective: 1000px;
+  perspective: 1200px;
 }
 
-.portal-ring {
+.monolith {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(139, 92, 246, 0.1);
-  border-radius: 50%;
-  animation: rotate-portal 20s linear infinite;
+  background: linear-gradient(to bottom, rgba(168, 85, 247, 0.1), rgba(59, 130, 246, 0.05));
+  border: 1px solid rgba(168, 85, 247, 0.1);
+  transform-style: preserve-3d;
+  animation: monolith-float 15s infinite ease-in-out;
+  backdrop-filter: blur(5px);
 }
 
-@keyframes rotate-portal {
-  from { transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0deg); }
-  to { transform: translate(-50%, -50%) rotateX(60deg) rotateZ(360deg); }
-}
-
-.starfield {
-  position: fixed;
-  inset: 0;
-  background-image: 
-    radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 50px 160px, rgba(139, 92, 246, 0.5), rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 90px 40px, rgba(59, 130, 246, 0.5), rgba(0,0,0,0));
-  background-size: 200px 200px;
-  animation: drift 60s linear infinite;
-  opacity: 0.3;
-  z-index: -1;
-}
-
-@keyframes drift {
-  from { background-position: 0 0; }
-  to { background-position: 200px 200px; }
+@keyframes monolith-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotateY(0deg) rotateX(10deg); }
+  50% { transform: translate3d(50px, -100px, 100px) rotateY(180deg) rotateX(-10deg); }
 }
 
 .ambient-glow {
   position: fixed;
-  width: 1000px;
-  height: 1000px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
-  filter: blur(120px);
+  width: 1200px;
+  height: 1200px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+  filter: blur(150px);
   z-index: -1;
   pointer-events: none;
   border-radius: 50%;
