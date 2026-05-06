@@ -23,6 +23,11 @@ function App() {
           <div className="ambient-glow" style={{ top: '-10%', left: '-10%' }}></div>
           <div className="ambient-glow" style={{ bottom: '-10%', right: '-10%' }}></div>
           
+          {/* Floating 3D Shapes */}
+          <div className="floating-shape" style={{ width: '300px', height: '300px', top: '10%', right: '10%', animationDelay: '0s' }}></div>
+          <div className="floating-shape" style={{ width: '400px', height: '400px', bottom: '20%', left: '5%', animationDelay: '-5s' }}></div>
+          <div className="floating-shape" style={{ width: '250px', height: '250px', top: '40%', left: '40%', animationDelay: '-10s' }}></div>
+          
           <Navbar />
           <AnimatePresence mode="wait">
             <Suspense fallback={<LoadingSpinner />}>

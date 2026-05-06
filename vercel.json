@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "server/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "client/dist/$1"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-id"
+        }
+      ],
+      "destination": "client/dist/index.html",
+      "permanent": false
+    }
+  ]
+}
