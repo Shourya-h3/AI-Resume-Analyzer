@@ -8,7 +8,28 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "keywords": ["resume", "nlp", "tfidf", "job-matching"],
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.1",
+    "multer": "^1.4.5-lts.1",
+    "natural": "^6.10.4",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "keywords": [
+    "resume",
+    "nlp",
+    "tfidf",
+    "job-matching"
+  ],
   "author": "",
   "license": "ISC"
 }

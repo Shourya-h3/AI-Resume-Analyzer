@@ -4,9 +4,19 @@ import { motion } from 'framer-motion';
 import { Upload, FileText, X, CheckCircle } from 'lucide-react';
 import './UploadCard.css';
 
-const UploadZone = ({ label, accept, file, onDrop, onRemove, id }) => {
+const UploadZone = ({ label, accept, file, onDrop, onRemove, id, onError }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
+    onDropRejected: (fileRejections) => {
+      const error = fileRejections[0]?.errors[0];
+      if (error?.code === 'file-too-large') {
+        onError('File is too large. Maximum size is 5MB.');
+      } else if (error?.code === 'file-invalid-type') {
+        onError('Invalid file type. Please upload a PDF document.');
+      } else {
+        onError('Error uploading file. Please try again.');
+      }
+    },
     accept,
     maxFiles: 1,
     maxSize: 5 * 1024 * 1024,
@@ -151,6 +161,7 @@ const UploadCard = ({ onSubmit, loading }) => {
           onDrop={onDropResume}
           onRemove={() => setResumeFile(null)}
           id="resume-upload-zone"
+          onError={setError}
         />
 
         {/* JD Mode Toggle */}
@@ -193,6 +204,7 @@ const UploadCard = ({ onSubmit, loading }) => {
             onDrop={onDropJD}
             onRemove={() => setJdFile(null)}
             id="jd-upload-zone"
+            onError={setError}
           />
         )}
 

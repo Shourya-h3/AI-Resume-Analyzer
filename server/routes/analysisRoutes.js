@@ -7,6 +7,7 @@ const {
   getAnalyses,
   getAnalysisById,
   deleteAnalysis,
+  generateCoverLetterHandler
 } = require('../controllers/analysisController');
 
 // Accept resume (required PDF) + jobDescription (optional PDF) + body fields
@@ -19,5 +20,6 @@ router.post('/', optionalAuth, uploadFields, createAnalysis);
 router.get('/', optionalAuth, getAnalyses);
 router.get('/:id', optionalAuth, getAnalysisById);
 router.delete('/:id', optionalAuth, deleteAnalysis);
+router.post('/:id/cover-letter', optionalAuth, generateCoverLetterHandler);
 
 module.exports = router;

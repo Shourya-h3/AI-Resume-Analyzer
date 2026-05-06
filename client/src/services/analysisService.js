@@ -22,3 +22,8 @@ export const deleteAnalysis = async (id) => {
   const response = await api.delete(`/analyses/${id}`);
   return response.data;
 };
+
+export const generateCoverLetter = async (id) => {
+  const response = await api.post(`/analyses/${id}/cover-letter`);
+  return response.data;
+};

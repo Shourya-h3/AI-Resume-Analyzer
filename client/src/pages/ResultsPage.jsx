@@ -8,7 +8,8 @@ import ScoreGauge from '../components/ScoreGauge';
 import SkillBadges from '../components/SkillBadges';
 import SuggestionPanel from '../components/SuggestionPanel';
 import SkillGapChart from '../components/SkillGapChart';
-import { getAnalysisById } from '../services/analysisService';
+import SkillGapAnalyzer from '../components/SkillGapAnalyzer';
+import { getAnalysisById, generateCoverLetter } from '../services/analysisService';
 import '../components/Components.css';
 import './ResultsPage.css';
 
@@ -18,6 +19,24 @@ const ResultsPage = () => {
   const [analysis, setAnalysis] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  
+  // Cover Letter state
+  const [coverLetter, setCoverLetter] = useState('');
+  const [generatingLetter, setGeneratingLetter] = useState(false);
+  const [letterError, setLetterError] = useState('');
+
+  const handleGenerateCoverLetter = async () => {
+    setGeneratingLetter(true);
+    setLetterError('');
+    try {
+      const res = await generateCoverLetter(id);
+      setCoverLetter(res.coverLetter);
+    } catch (err) {
+      setLetterError(err.response?.data?.message || 'Failed to generate cover letter.');
+    } finally {
+      setGeneratingLetter(false);
+    }
+  };
 
   useEffect(() => {
     const fetchAnalysis = async () => {
@@ -89,6 +108,15 @@ const ResultsPage = () => {
             </p>
           </div>
           <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <button 
+              className="btn btn-secondary btn-sm" 
+              onClick={handleGenerateCoverLetter}
+              disabled={generatingLetter}
+              style={{ background: 'var(--gradient-card)', border: '1px solid var(--violet)', color: 'var(--text-primary)' }}
+            >
+              {generatingLetter ? <div className="spinner" style={{width: 14, height: 14, borderWidth: 2, borderColor: 'var(--violet)'}}/> : '✨'} 
+              {generatingLetter ? 'Generating...' : 'AI Cover Letter'}
+            </button>
             <Link to="/" className="btn btn-primary btn-sm">
               <RefreshCw size={14} /> New Analysis
             </Link>
@@ -138,6 +166,60 @@ const ResultsPage = () => {
             <SkillGapChart skillBreakdown={analysis.skillBreakdown} />
           </motion.div>
         </div>
+
+        {/* AI Skill Gap Analyzer (Killer Feature) */}
+        <SkillGapAnalyzer missingSkills={analysis.missingSkills} />
+
+        {/* Cover Letter Section */}
+        {(coverLetter || generatingLetter || letterError) && (
+          <motion.div
+            className="glass-card"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{ marginBottom: '1.5rem', padding: '1.5rem' }}
+          >
+            <div className="section-header" style={{ marginBottom: '1rem' }}>
+              <div className="section-icon section-icon-indigo">
+                ✨
+              </div>
+              <h3 style={{ fontSize: '1.1rem' }}>AI Cover Letter</h3>
+            </div>
+            
+            {letterError && (
+              <div className="alert alert-error" style={{ marginBottom: '1rem' }}>
+                {letterError}
+              </div>
+            )}
+            
+            {coverLetter && (
+              <div style={{ position: 'relative' }}>
+                <textarea 
+                  readOnly 
+                  value={coverLetter} 
+                  style={{ 
+                    width: '100%', 
+                    minHeight: '300px', 
+                    background: 'rgba(0,0,0,0.2)', 
+                    border: '1px solid var(--border)', 
+                    borderRadius: 'var(--radius-md)', 
+                    padding: '1.5rem',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'inherit',
+                    lineHeight: '1.6',
+                    resize: 'vertical'
+                  }} 
+                />
+                <button 
+                  className="btn btn-sm btn-secondary" 
+                  style={{ position: 'absolute', top: '1rem', right: '1rem' }}
+                  onClick={() => navigator.clipboard.writeText(coverLetter)}
+                >
+                  Copy
+                </button>
+              </div>
+            )}
+          </motion.div>
+        )}
 
         {/* Keywords Section */}
         {(analysis.topKeywords?.job?.length > 0 || analysis.topKeywords?.resume?.length > 0) && (
